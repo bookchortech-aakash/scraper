@@ -1,0 +1,9 @@
+requests>=2.31
+parsel>=1.9
+psycopg2-binary>=2.9
+fastapi>=0.110
+uvicorn>=0.29
+openpyxl>=3.1
+# Optional: only needed when a site uses engine "browser" or "auto" falls back.
+#   pip install playwright && playwright install chromium
+playwright>=1.43

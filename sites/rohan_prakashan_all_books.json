@@ -1,0 +1,32 @@
+{
+  "name": "rohan_prakashan_all",
+  "url": "https://rohanprakashan.com/shop/",
+  "engine": "http_html",
+  "list": {
+    "container": "li.product, .type-product, .product-item"
+  },
+  "next_page": "a.next::attr(href), a.next.page-numbers::attr(href), .woocommerce-pagination a.next::attr(href), a:contains('>')::attr(href), a:contains('→')::attr(href), a:contains('Next')::attr(href), ul.page-numbers li a.next::attr(href)",
+  "key_fields": [
+    "url"
+  ],
+  "fields": {
+    "title": {
+      "selector": "h2, h3, .woocommerce-loop-product__title",
+      "type": "string"
+    },
+    "price": {
+      "selector": ".price, .woocommerce-Price-amount",
+      "type": "string"
+    },
+    "url": {
+      "selector": "a.woocommerce-LoopProduct-link, a[href*='/product/']",
+      "attr": "href",
+      "type": "url"
+    },
+    "image_url": {
+      "selector": "img",
+      "attr": "src",
+      "type": "url"
+    }
+  }
+}

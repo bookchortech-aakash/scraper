@@ -1,0 +1,59 @@
+{
+"name": "ritikart",
+"url": "https://ritikart.com",
+"engine": "http_json",
+"key_fields": [
+"id"
+],
+"records_path": "products",
+"request": {
+"method": "GET",
+"url": "https://ritikart.com/products.json",
+"page_param": "page",
+"page_size_param": "limit",
+"page_start": 1,
+"page_size": 250
+},
+"fields": {
+"id": {
+"path": "id",
+"type": "string"
+},
+"isbn": {
+"path": "variants.0.barcode",
+"type": "string"
+},
+"title": {
+"path": "title",
+"type": "string"
+},
+"author": {
+"path": "vendor",
+"type": "string"
+},
+"publisher": {
+"path": "vendor",
+"type": "string"
+},
+"mrp": {
+"path": "variants.0.compare_at_price",
+"type": "number"
+},
+"sp": {
+"path": "variants.0.price",
+"type": "number"
+},
+"language": {
+"path": "product_type",
+"type": "string"
+},
+"url": {
+"path": "handle",
+"type": "string"
+},
+"image_url": {
+"path": "images.0.src",
+"type": "string"
+}
+}
+}

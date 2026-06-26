@@ -1,0 +1,21 @@
+# Browser-capable image: use this instead of the default Dockerfile when a site
+# config uses engine "browser" (or "auto" needs the JS fallback), e.g. bookganga.
+# It ships Chromium + all system libs, so it's ~1GB larger than the slim image.
+#
+# Build/run with compose by pointing the service at this file:
+#   build:
+#     context: .
+#     dockerfile: Dockerfile.browser
+FROM mcr.microsoft.com/playwright/python:v1.43.0-jammy
+
+WORKDIR /app
+COPY requirements.txt .
+# Browser + deps are already in the base image; just install the Python libs
+# (playwright included this time).
+RUN pip install --no-cache-dir -r requirements.txt && \
+    playwright install chromium
+
+COPY *.py ./
+COPY sites ./sites
+
+CMD ["uvicorn", "dashboard:app", "--host", "0.0.0.0", "--port", "8050"]

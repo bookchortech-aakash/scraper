@@ -1,0 +1,36 @@
+{
+  "name": "minhajbooks",
+  "url": "https://www.minhajbooks.com/english/Urdu/all",
+  "engine": "http_html",
+  "list": {
+    "container": ".book-item, .item, .product, .col-md-2, .col-md-3, .col-md-4, .col-sm-6, .product-layout, .product-thumb, .grid-item"
+  },
+  "next_page": "ul.pagination li a:contains('>')::attr(href), a.next::attr(href), a:contains('Next')::attr(href), a:contains('>>')::attr(href)",
+  "key_fields": [
+    "url"
+  ],
+  "fields": {
+    "title": {
+      "selector": "h2, h3, h4, .title, .product-title, .name a, .book-title",
+      "type": "string"
+    },
+    "author": {
+      "selector": ".author, .writer, .author-name, p:contains('Author'), p:contains('Tahir'), h5, h6, small",
+      "type": "string"
+    },
+    "price": {
+      "selector": ".price, .amount, .product-price, .book-price, span:contains('Rs'), p:contains('Rs'), span:contains('$')",
+      "type": "string"
+    },
+    "url": {
+      "selector": "a[href*='/book/']",
+      "attr": "href",
+      "type": "url"
+    },
+    "image_url": {
+      "selector": "img",
+      "attr": "src",
+      "type": "url"
+    }
+  }
+}

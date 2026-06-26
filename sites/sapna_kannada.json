@@ -1,0 +1,131 @@
+{
+  "name": "sapna_kannada",
+  "url": "https://api.sapnaonline.com/graphql",
+  "engine": "http_json",
+  "key_fields": [
+    "id"
+  ],
+  "records_path": "data.catalog.search.hits",
+  "total_path": "$data.catalog.search.total",
+  "request": {
+    "method": "POST",
+    "url": "https://api.sapnaonline.com/graphql",
+    "page_param": "variables.skip",
+    "page_size_param": "variables.limit",
+    "page_start": 1,
+    "page_size": 48,
+    "body": {
+      "operationName": "searchItemCatalog",
+      "variables": {
+        "category": "",
+        "store": "",
+        "sub_category": "",
+        "term": [
+          {
+            "field": "product_language",
+            "value": "Kannada"
+          },
+          {
+            "field": "product_binding",
+            "value": []
+          },
+          {
+            "field": "product_author_url_slug",
+            "value": []
+          },
+          {
+            "field": "product_publisher_url_slug",
+            "value": []
+          }
+        ],
+        "match": null,
+        "range": [
+          {
+            "field": "product_stock",
+            "rangeQueryInputType": {
+              "from": 1,
+              "to": 999999
+            }
+          },
+          {
+            "field": "product_stock",
+            "rangeQueryInputType": {
+              "from": -1,
+              "to": -1
+            }
+          }
+        ],
+        "limit": 48,
+        "skip": 1,
+        "sort": ""
+      },
+      "query": "query searchItemCatalog($category: String, $store: String, $sub_category: String, $term: [ElasticSearchTermQueryInputType], $match: ElasticSearchQueryMatchInputType, $range: [ElasticSearchRangeQueryInputType], $keyword: String, $limit: Int, $skip: Int, $sort: String, $tag: String, $widget_url_slug: String) {\n  catalog {\n    search(category: $category, store: $store, sub_category: $sub_category, term: $term, match: $match, range: $range, keyword: $keyword, limit: $limit, skip: $skip, sort: $sort, tag: $tag, widget_url_slug: $widget_url_slug) {\n      total\n      hits {\n        id\n        product_id\n        product_name\n        product_author\n        product_isbn10\n        product_binding\n        product_pages\n        product_msrp\n        product_language\n        product_publisher\n        product_seo_url\n        product_total_rating\n        product_avg_rating\n        product_discount_percentage\n        product_unit_price\n        product_stock\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n"
+    }
+  },
+  "fields": {
+    "id": {
+      "path": "id",
+      "type": "string"
+    },
+    "title": {
+      "path": "product_name",
+      "type": "string"
+    },
+    "author": {
+      "path": "product_author",
+      "type": "string"
+    },
+    "isbn": {
+      "path": "product_isbn10",
+      "type": "string"
+    },
+    "binding": {
+      "path": "product_binding",
+      "type": "string"
+    },
+    "language": {
+      "path": "product_language",
+      "type": "string"
+    },
+    "publisher": {
+      "path": "product_publisher",
+      "type": "string"
+    },
+    "pages": {
+      "path": "product_pages",
+      "type": "number"
+    },
+    "mrp": {
+      "path": "product_msrp",
+      "type": "number"
+    },
+    "price": {
+      "path": "product_unit_price",
+      "type": "number"
+    },
+    "discount_pct": {
+      "path": "product_discount_percentage",
+      "type": "number"
+    },
+    "stock": {
+      "path": "product_stock",
+      "type": "number"
+    },
+    "rating": {
+      "path": "product_avg_rating",
+      "type": "number"
+    },
+    "ratings_count": {
+      "path": "product_total_rating",
+      "type": "number"
+    },
+    "url": {
+      "path": "product_seo_url",
+      "type": "string"
+    },
+    "product_id": {
+      "path": "product_id",
+      "type": "string"
+    }
+  }
+}
