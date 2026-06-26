@@ -31,8 +31,7 @@ class HttpClient:
         self.min_delay, self.max_delay = min(lo, hi), max(lo, hi)
         self._next_wait = 0.0
         self.s = requests.Session()
-        self.s.headers.update({"User-Agent": config.USER_AGENT,
-                               "Accept": "*/*"})
+        self.s.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"})
         if Retry is not None:
             retry = Retry(total=config.HTTP_RETRIES, backoff_factor=2.0,
                           status_forcelist=(429, 500, 502, 503, 504),

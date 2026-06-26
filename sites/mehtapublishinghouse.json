@@ -1,12 +1,10 @@
 {
   "name": "mehtapublishinghouse",
   "url": "https://www.mehtapublishinghouse.com/category/All.aspx",
-  "engine": "browser",
-  "wait_for": "table.productlisttablestructure figure",
+  "engine": "http_html",
   "list": {
     "container": "table.productlisttablestructure figure, figure.span4.slide"
   },
-  "next_page": "tr.pagination a:contains('Next')::attr(href), tr.pagination a:contains('2')::attr(href), tr.pagination a:last-child::attr(href)",
   "key_fields": [
     "url"
   ],
