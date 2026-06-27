@@ -39,3 +39,15 @@ SITES_DIR = os.environ.get("SCRAPER_SITES_DIR",
 # trailing average is flagged as a probably-broken selector.
 DRIFT_HIGH = 0.6
 DRIFT_LOW = 0.15
+
+# ---- Custom scripts feature ----------------------------------------------
+# Where browser-authored custom scripts are saved. Bind-mount this in compose
+# (./scripts:/app/scripts) so the .py files survive image rebuilds, like sites/.
+SCRIPTS_DIR = os.environ.get("SCRAPER_SCRIPTS_DIR",
+                             os.path.join(os.path.dirname(__file__), "scripts"))
+
+# Shared secret that gates the script editor/runner routes. If EMPTY, the whole
+# scripts feature is DISABLED (fails safe) — nothing can write or run scripts.
+# Set this to enable it. Critical because the dashboard is exposed publicly via
+# ngrok with no other auth, and running scripts is arbitrary code execution.
+SCRIPTS_TOKEN = os.environ.get("SCRIPTS_TOKEN", "")

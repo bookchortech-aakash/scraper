@@ -24,8 +24,11 @@ services:
       POSTGRES_USER: scraper
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-scraper}
       SCRAPER_UA: "${SCRAPER_UA:-FortovaScraper/1.0 (contact: you@example.com)}"
+      # Empty by default -> scripts feature stays disabled (fails safe).
+      SCRIPTS_TOKEN: "${SCRIPTS_TOKEN:-}"
     volumes:
       - ./sites:/app/sites
+      - ./scripts:/app/scripts
     depends_on:
       postgres:
         condition: service_healthy
