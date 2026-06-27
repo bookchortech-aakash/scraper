@@ -15,11 +15,13 @@ def run():
     # Exact filter payload from the website to trigger the "All Books" query
     book_filter = '{ "BookSearchTags":"" , "BookTitle":"" ,"BT":"" , "ISBN":"","AID":"0" , "LID":"0","CID":"0" , "PID":"0","FC":"0" , "EB":"0","EM":"0" , "FEB":"0","FEM":"0" , "cmdSearch":"","BookType":"1" , "LR":"0","UR":"0" , "CR":"0","Ath":"" , "Pub":"","BTitle":"" , "EId":"0","SelSortBy":"7" , "NEB":"0","NB":"0" , "IncOutOfStock":"1","SelCatOnly":"False","Alpha":"" } '
 
+    # STARTING FROM SCRATCH
     start_index = 0
     batch_size = 50
     
-    print("🚀 Starting BookGanga API Extraction...")
+    print("🚀 Starting BookGanga API Extraction from the beginning...")
     
+    # "w" (write mode) completely empties the old file automatically!
     with open("bookganga_full_catalog.csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["Title", "Price", "URL", "Image_URL"])
@@ -36,8 +38,6 @@ def run():
             
             try:
                 response = requests.get(url, headers=headers, params=params, timeout=15)
-                
-                # The API returns a JSON string that contains raw HTML. We parse it here to avoid the Selector crash!
                 html_data = response.json()
                 
                 if not html_data.strip():
@@ -72,7 +72,7 @@ def run():
                     writer.writerow([title, price, book_url, image_url])
                     
                 start_index += batch_size
-                time.sleep(0.5) # Gentle pause to prevent IP bans
+                time.sleep(0.5) 
                 
             except Exception as e:
                 print(f"⚠️ Error fetching batch {start_index}: {e}")
