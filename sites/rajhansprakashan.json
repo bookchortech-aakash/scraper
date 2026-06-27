@@ -1,0 +1,43 @@
+{
+  "name": "rajhansprakashan",
+  "url": "https://www.rajhansprakashan.com/book-store",
+  "engine": "http_html",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9"
+  },
+  "list": {
+    "container": ".grid > div.border.p-4"
+  },
+  "next_page": "a[rel='next']::attr(href), a[aria-label*='Next']::attr(href)",
+  "key_fields": [
+    "url"
+  ],
+  "fields": {
+    "title": {
+      "selector": "a.text-center span, a.text-center",
+      "type": "string"
+    },
+    "author": {
+      "selector": "a.text-gray-700.text-center",
+      "type": "string"
+    },
+    "price": {
+      "selector": "div.flex-row > span:not(.line-through)",
+      "type": "string",
+      "re": "[0-9.,]+",
+      "regex": "[0-9.,]+"
+    },
+    "url": {
+      "selector": "a[href*='/product-details/']",
+      "attr": "href",
+      "type": "url"
+    },
+    "image_url": {
+      "selector": "img[src*='/storage/app/cover/'], img",
+      "attr": "src",
+      "type": "url"
+    }
+  }
+}

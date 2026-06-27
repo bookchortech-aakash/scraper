@@ -1,0 +1,48 @@
+{
+  "name": "majestic",
+  "url": "https://www.majesticreaders.com/home/books_by_subcollection?coll_id=3&subcoll_id=23",
+  "engine": "http_html",
+  "key_fields": ["url"],
+
+  "list": {
+    "container": "div.product.books-by-subcollection"
+  },
+  "next_page": ".pagination li:nth-last-child(2) a::attr(href)",
+
+  "fields": {
+    "title": {
+      "selector": "h3.name a",
+      "type": "string"
+    },
+    "author": {
+      "selector": "h3.name:nth-of-type(2)",
+      "type": "string"
+    },
+    "price": {
+      "selector": ".price",
+      "type": "number",
+      "transform": "currency"
+    },
+    "mrp": {
+      "selector": ".price-before-discount",
+      "type": "number",
+      "transform": "currency"
+    },
+    "url": {
+      "selector": "a[href*='/book/']",
+      "attr": "href",
+      "type": "url"
+    },
+    "image_url": {
+      "selector": "img",
+      "attr": "src",
+      "type": "url"
+    },
+    "language": {
+      "selector": "//title",
+      "type": "string",
+      "regex": "Buy (\\w+) Books",
+      "transform": "lower"
+    }
+  }
+}
