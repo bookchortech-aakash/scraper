@@ -1,0 +1,71 @@
+{
+  "name": "champaca",
+  "url": "https://champaca.in",
+  "engine": "http_json",
+  "key_fields": [
+    "id"
+  ],
+  "records_path": "products",
+  "request": {
+    "method": "GET",
+    "url": "https://champaca.in/products.json",
+    "page_param": "page",
+    "page_size_param": "limit",
+    "page_start": 1,
+    "page_size": 250
+  },
+  "fields": {
+    "id": {
+      "path": "id",
+      "type": "string"
+    },
+    "title": {
+      "path": "title",
+      "type": "string"
+    },
+    "description": {
+      "path": "body_html",
+      "type": "string"
+    },
+    "author": {
+      "path": "vendor",
+      "type": "string"
+    },
+    "publisher": {
+      "path": "vendor",
+      "type": "string"
+    },
+    "mrp": {
+      "path": "variants.0.price",
+      "type": "number"
+    },
+    "sp": {
+      "path": "variants.0.price",
+      "type": "number"
+    },
+    "isbn": {
+      "path": "variants.0.barcode",
+      "type": "string"
+    },
+    "language": {
+      "path": "product_type",
+      "type": "string"
+    },
+    "tags": {
+      "path": "tags",
+      "type": "string"
+    },
+    "availability": {
+      "path": "variants.0.available",
+      "type": "string"
+    },
+    "url": {
+      "path": "handle",
+      "type": "string"
+    },
+    "image_url": {
+      "path": "images.0.src",
+      "type": "string"
+    }
+  }
+}

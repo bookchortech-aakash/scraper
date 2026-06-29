@@ -30,8 +30,6 @@ import sites_api
 
 app = FastAPI(title="Scraper monitor")
 app.include_router(scripts_api.router)
-import dedupe_api
-app.include_router(dedupe_api.router)
 app.include_router(sites_api.router)
 
 @app.on_event("startup")
@@ -852,7 +850,6 @@ DATA_PAGE = r"""<!doctype html>
   </div>
   <div class="controls">
     <button class="btn danger" id="delsel">delete selected</button>
-    <button class="btn danger" id="dedupe">remove duplicate titles</button>
     <span class="spacer"></span>
     <label id="dedupwrap" class="muted" style="display:none"><input type="checkbox" id="dedup" checked> unique books (by ISBN)</label>
     <a class="btn" id="dldb">⬇ .db (SQLite)</a>
@@ -960,13 +957,6 @@ $('#delsel').onclick=async()=>{
   if(!confirm(`Delete ${ids.length} record(s) from ${st.site}?`))return;
   const d=await (await fetch(`/api/records?site=${encodeURIComponent(st.site)}&ids=${ids.join(',')}`,{method:'DELETE'})).json();
   toast(`deleted ${d.deleted}`); loadGrid();
-};
-$('#dedupe').onclick=async()=>{
-  if(!st.site){toast('no site');return;}
-  if(!confirm(`Remove duplicate "title" rows from ${st.site}? One copy of each title is kept; the rest are permanently deleted.`))return;
-  const d=await (await fetch(`/api/dedupe?site=${encodeURIComponent(st.site)}&field=title`,{method:'DELETE'})).json();
-  if(d.error){toast(d.error);return;}
-  toast(`removed ${d.deleted} duplicate(s)`); loadGrid();
 };
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function pct(a,b){return b?(a/b*100):0;}

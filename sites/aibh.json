@@ -1,44 +1,38 @@
 {
-"name": "aibh",
-"url": "https://www.aibh.in/shop",
-"engine": "http_html",
-"headers": {
-"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,/;q=0.8"
-},
-"list": {
-"container": ".product-item, .product-layout, .product-grid > div, .product"
-},
-"next_page": "a[rel='next']::attr(href), a.next::attr(href), a:contains('Next')::attr(href), ul.pagination li a:last-child::attr(href), a:contains('»')::attr(href)",
-"key_fields": [
-"url"
-],
-"fields": {
-"title": {
-"selector": "h2, h3, h4, .product-name, .product-title, .name a, a[href*='/product/']",
-"type": "string"
-},
-"author": {
-"selector": "span:contains('Author'), p:contains('Author'), div:contains('Author'), .author",
-"type": "string",
-"re": "Author\\s*:\\s*(.)",
-"regex": "Author\\s:\\s*(.)"
-},
-"price": {
-"selector": ".price, span:contains('₹'), .amount",
-"type": "string",
-"re": "₹\\s([0-9.,]+)",
-"regex": "₹\\s*([0-9.,]+)"
-},
-"url": {
-"selector": "a[href*='product'], a:first-of-type",
-"attr": "href",
-"type": "url"
-},
-"image_url": {
-"selector": "img",
-"attr": "src",
-"type": "url"
-}
-}
+  "name": "aibh",
+  "url": "https://www.aibh.in/shop",
+  "engine": "browser",
+  "list": {
+    "container": "li.product, .product, .product-col"
+  },
+  "next_page": "a.next, .next.page-numbers",
+  "key_fields": [
+    "url"
+  ],
+  "fields": {
+    "title": {
+      "selector": "h2, h3, .woocommerce-loop-product__title, .product-title",
+      "type": "string"
+    },
+    "author": {
+      "selector": ".author, .product-author, p:contains('Author')",
+      "type": "string"
+    },
+    "price": {
+      "selector": ".price, .woocommerce-Price-amount",
+      "type": "string",
+      "re": "₹\\s*([0-9.,]+)",
+      "regex": "₹\\s*([0-9.,]+)"
+    },
+    "url": {
+      "selector": "a.woocommerce-LoopProduct-link, a.product-image-link, a",
+      "attr": "href",
+      "type": "string"
+    },
+    "image_url": {
+      "selector": "img",
+      "attr": "src",
+      "type": "url"
+    }
+  }
 }
