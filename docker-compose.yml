@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: scraper
+      POSTGRES_USER: scraper
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-scraper}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U scraper"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Build once, reused by runner + dashboard (same pattern as your collector).
+  base: &base
+    build: 
+      context: .
+      dockerfile: Dockerfile.browser
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: scraper
+      POSTGRES_USER: scraper
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-scraper}
+      SCRAPER_UA: "${SCRAPER_UA:-FortovaScraper/1.0 (contact: you@example.com)}"
+      # Empty by default -> scripts feature stays disabled (fails safe).
+      SCRIPTS_TOKEN: "${SCRIPTS_TOKEN:-}"
+    volumes:
+      - ./sites:/app/sites
+      - ./scripts:/app/scripts
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  dashboard:
+    <<: *base
+    command: uvicorn dashboard:app --host 0.0.0.0 --port 8050
+    ports:
+      - "127.0.0.1:8050:8050"
+
+  # One-off: `docker compose run --rm runner run --all`
+  runner:
+    <<: *base
+    profiles: ["cli"]
+    entrypoint: ["python", "runner.py"]
+
+volumes:
+  pgdata:

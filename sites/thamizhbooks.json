@@ -1,0 +1,56 @@
+{
+  "name": "thamizhbooks",
+  "url": "https://thamizhbooks.com/shop/",
+  "engine": "http_json",
+  "key_fields": [
+    "id"
+  ],
+  "request": {
+    "method": "GET",
+    "url": "https://thamizhbooks.com/wp-json/wc/store/v1/products",
+    "page_param": "page",
+    "page_size_param": "per_page",
+    "page_start": 1,
+    "page_size": 100
+  },
+  "fields": {
+    "id": {
+      "path": "id",
+      "type": "string"
+    },
+    "sku": {
+      "path": "sku",
+      "type": "string"
+    },
+    "title": {
+      "path": "name",
+      "type": "string"
+    },
+    "sp": {
+      "path": "prices.price",
+      "type": "number",
+      "transform": "paise"
+    },
+    "mrp": {
+      "path": "prices.regular_price",
+      "type": "number",
+      "transform": "paise"
+    },
+    "category": {
+      "path": "categories.0.name",
+      "type": "string"
+    },
+    "in_stock": {
+      "path": "is_in_stock",
+      "type": "boolean"
+    },
+    "url": {
+      "path": "permalink",
+      "type": "url"
+    },
+    "image_url": {
+      "path": "images.0.src",
+      "type": "url"
+    }
+  }
+}

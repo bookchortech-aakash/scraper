@@ -1,0 +1,39 @@
+{
+"name": "bookganga",
+"url": "https://www.bookganga.com/eBooks/Books",
+"engine": "browser",
+"wait_for": ".BookThumbBlock",
+"sleep": 4,
+"delay": 4000,
+"list": {
+"container": ".BookThumbBlock"
+},
+"next_page": "#divShowMore > div",
+"key_fields": [
+"url"
+],
+"fields": {
+"title": {
+"selector": ".BookName",
+"type": "string"
+},
+"price": {
+"selector": ".BookPrice",
+"type": "string",
+"re": "R\\s*([0-9.,]+)",
+"regex": "R\\s*([0-9.,]+)"
+},
+"url": {
+"selector": ".BookThumbListBlock",
+"attr": "onclick",
+"type": "string",
+"re": "location\\.href='(.?)'",
+"regex": "location\\.href='(.?)'"
+},
+"image_url": {
+"selector": "img[src*='/images/books/']",
+"attr": "src",
+"type": "url"
+}
+}
+}

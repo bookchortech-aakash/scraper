@@ -1,0 +1,38 @@
+{
+  "name": "aibh",
+  "url": "https://www.aibh.in/shop",
+  "engine": "browser",
+  "list": {
+    "container": "li.product, .product, .product-col"
+  },
+  "next_page": "a.next, .next.page-numbers",
+  "key_fields": [
+    "url"
+  ],
+  "fields": {
+    "title": {
+      "selector": "h2, h3, .woocommerce-loop-product__title, .product-title",
+      "type": "string"
+    },
+    "author": {
+      "selector": ".author, .product-author, p:contains('Author')",
+      "type": "string"
+    },
+    "price": {
+      "selector": ".price, .woocommerce-Price-amount",
+      "type": "string",
+      "re": "₹\\s*([0-9.,]+)",
+      "regex": "₹\\s*([0-9.,]+)"
+    },
+    "url": {
+      "selector": "a.woocommerce-LoopProduct-link, a.product-image-link, a",
+      "attr": "href",
+      "type": "string"
+    },
+    "image_url": {
+      "selector": "img",
+      "attr": "src",
+      "type": "url"
+    }
+  }
+}

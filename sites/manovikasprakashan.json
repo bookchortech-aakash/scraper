@@ -1,0 +1,41 @@
+{
+  "name": "manovikasprakashan",
+  "url": "https://manovikasprakashan.com/index.php?route=product/category&path=81",
+  "engine": "http_html",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9"
+  },
+  "list": {
+    "container": ".product-layout, .product-thumb, .product-list > div, .product-grid > div, .item"
+  },
+  "next_page": "ul.pagination li a:contains('>')::attr(href), ul.pagination li a:contains('>')::attr(href), a.next::attr(href), a:contains('Next')::attr(href)",
+  "key_fields": [
+    "url"
+  ],
+  "fields": {
+    "title": {
+      "selector": ".name a, h4 a, .caption a, .product-name a, .product-title",
+      "type": "string"
+    },
+    "author": {
+      "selector": "p:contains('Author'), span:contains('Author'), div:contains('Author'), .author, .writer, .description",
+      "type": "string"
+    },
+    "price": {
+      "selector": ".price, .price-new, span:contains('₹'), span:contains('Rs')",
+      "type": "string"
+    },
+    "url": {
+      "selector": "a[href*='product_id=']",
+      "attr": "href",
+      "type": "url"
+    },
+    "image_url": {
+      "selector": "img",
+      "attr": "src",
+      "type": "url"
+    }
+  }
+}

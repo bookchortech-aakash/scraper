@@ -1,0 +1,40 @@
+{
+  "name": "exoticindia",
+  "url": "https://www.exoticindiaart.com/book/",
+  "engine": "browser",
+  "wait_for": "body",
+  "list": {
+    "container": "div[class*='product'], .grid-item, .book-thumb"
+  },
+  "next_page": "a[href*='pg=']",
+  "key_fields": [
+    "url"
+  ],
+  "fields": {
+    "title": {
+      "selector": "h1, .product-title",
+      "type": "string"
+    },
+    "author": {
+      "selector": "#product-details-specifications-table tr",
+      "type": "string"
+    },
+    "price": {
+      "selector": ".product-price",
+      "type": "string"
+    },
+    "url": {
+      "selector": "a[href*='/book/details/']",
+      "attr": "href",
+      "type": "url"
+    },
+    "isbn": {
+      "selector": "#product-details-specifications-table tr",
+      "type": "string"
+    },
+    "language": {
+      "selector": "#product-details-specifications-table tr",
+      "type": "string"
+    }
+  }
+}

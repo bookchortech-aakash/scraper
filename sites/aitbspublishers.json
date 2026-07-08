@@ -1,0 +1,52 @@
+{
+  "name": "aitbspublishers",
+  "url": "https://www.aitbspublishersindia.com/index.php?route=product/category&path=8",
+  "engine": "http_html",
+  "list": {
+    "container": ".product-layout, .product-thumb, .product-list > div, .product-grid > div, .product-item, .product-box, .box-product > div, .item"
+  },
+  "next_page": "ul.pagination li a:contains('>')::attr(href), ul.pagination li a:contains('&gt;')::attr(href), a.next::attr(href), a:contains('Next')::attr(href)",
+  "key_fields": [
+    "url"
+  ],
+  "fields": {
+    "title": {
+      "selector": ".name a, h4 a, .name, h4, .caption a, .caption h4, .product-name a, .product-title",
+      "type": "string",
+      "re": "^(.*?)(?:,?\\s*[0-9]+/[Ee][Dd]\\.?)?$",
+      "regex": "^(.*?)(?:,?\\s*[0-9]+/[Ee][Dd]\\.?)?$"
+    },
+    "edition": {
+      "selector": ".name a, h4 a, .name, h4, .caption a, .caption h4, .product-name a, .product-title",
+      "type": "string",
+      "re": "([0-9]+/[Ee][Dd]\\.?)",
+      "regex": "([0-9]+/[Ee][Dd]\\.?)"
+    },
+    "author": {
+      "selector": ".caption, .description",
+      "type": "string",
+      "re": "Author\\s*:\\s*(.*?)\\s*ISBN",
+      "regex": "Author\\s*:\\s*(.*?)\\s*ISBN"
+    },
+    "isbn": {
+      "selector": ".caption, .description",
+      "type": "string",
+      "re": "ISBN\\s*:\\s*([0-9X\\-]+)",
+      "regex": "ISBN\\s*:\\s*([0-9X\\-]+)"
+    },
+    "price": {
+      "selector": ".price, .price-new, span:contains('र')",
+      "type": "string"
+    },
+    "url": {
+      "selector": "a[href*='product_id=']",
+      "attr": "href",
+      "type": "url"
+    },
+    "image_url": {
+      "selector": "img",
+      "attr": "src",
+      "type": "url"
+    }
+  }
+}

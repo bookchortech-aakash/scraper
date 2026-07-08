@@ -1,0 +1,35 @@
+{
+  "name": "mehtapublishinghouse",
+  "url": "https://www.mehtapublishinghouse.com/category/All.aspx",
+  "engine": "browser",
+  "wait_for": "table.productlisttablestructure figure",
+  "list": {
+    "container": "table.productlisttablestructure figure, figure.span4.slide"
+  },
+  "next_page": "tr.pagination a:contains('Next')::attr(href), tr.pagination a:contains('2')::attr(href), tr.pagination a:last-child::attr(href)",
+  "key_fields": [
+    "url"
+  ],
+  "fields": {
+    "title": {
+      "selector": "span.title a",
+      "type": "string"
+    },
+    "price": {
+      "selector": ".price",
+      "type": "string",
+      "re": "[0-9.,]+",
+      "regex": "[0-9.,]+"
+    },
+    "url": {
+      "selector": "a[href*='book-details']",
+      "attr": "href",
+      "type": "url"
+    },
+    "image_url": {
+      "selector": "img",
+      "attr": "src",
+      "type": "url"
+    }
+  }
+}

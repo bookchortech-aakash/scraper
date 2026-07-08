@@ -1,0 +1,37 @@
+{
+"name": "dcbookstore",
+"url": "https://dcbookstore.com/category/novel",
+"engine": "browser",
+"wait_for": "body",
+"list": {
+"container": ".row .col-md-3, .row .col-6, div[class*='product'], div[class*='item']"
+},
+"next_page": "a[rel='next']::attr(href), .pagination a.next::attr(href), ul.pagination li:last-child a::attr(href), a.next",
+"key_fields": [
+"url"
+],
+"fields": {
+"title": {
+"selector": "h2, h3, h4, h5, .title, .product-title, .name",
+"type": "string"
+},
+"author": {
+"selector": ".author, .writer, .product-author, p",
+"type": "string"
+},
+"price": {
+"selector": ".price, .amount, .sell-price, .special-price, span",
+"type": "string"
+},
+"url": {
+"selector": "a[href*='/books/'], a[href*='/product/']",
+"attr": "href",
+"type": "url"
+},
+"image_url": {
+"selector": "img",
+"attr": "src",
+"type": "url"
+}
+}
+}

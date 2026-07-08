@@ -1,0 +1,32 @@
+{
+"name": "boighar_full",
+"url": "https://boighar.in/shop/",
+"engine": "http_html",
+"list": {
+"container": "li.product, .product"
+},
+"next_page": "a.next::attr(href)",
+"key_fields": [
+"url"
+],
+"fields": {
+"title": {
+"selector": "h2, h3, .woocommerce-loop-product__title",
+"type": "string"
+},
+"price": {
+"selector": ".price",
+"type": "string"
+},
+"url": {
+"selector": "a.woocommerce-LoopProduct-link, a:first-of-type",
+"attr": "href",
+"type": "url"
+},
+"image_url": {
+"selector": "img",
+"attr": "src",
+"type": "url"
+}
+}
+}

@@ -1,0 +1,39 @@
+{
+  "name": "darussalam_all",
+  "url": "https://darussalam.in/collections/all",
+  "engine": "http_json",
+  "key_fields": [
+    "id"
+  ],
+  "records_path": "products",
+  "request": {
+    "method": "GET",
+    "url": "https://darussalam.in/products.json",
+    "page_param": "page",
+    "page_size_param": "limit",
+    "page_start": 1,
+    "page_size": 250
+  },
+  "fields": {
+    "id": {
+      "path": "id",
+      "type": "string"
+    },
+    "title": {
+      "path": "title",
+      "type": "string"
+    },
+    "price": {
+      "path": "variants.0.price",
+      "type": "string"
+    },
+    "url": {
+      "path": "handle",
+      "type": "string"
+    },
+    "image_url": {
+      "path": "images.0.src",
+      "type": "string"
+    }
+  }
+}

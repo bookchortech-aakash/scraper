@@ -1,0 +1,6 @@
+.env
+backups/
+bookganga_full.csv
+scripts/.*
+__pycache__/
+*.pyc

@@ -1,0 +1,43 @@
+{
+"name": "prajaktprakashan",
+"url": "https://prajaktprakashan.com/shop/",
+"engine": "http_html",
+"headers": {
+"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,/;q=0.8",
+"Accept-Language": "en-US,en;q=0.9"
+},
+"list": {
+"container": "li.product, .type-product, .product-item, .product-grid > div, .product"
+},
+"next_page": "a.next::attr(href), a.next.page-numbers::attr(href), a:contains('NEXT')::attr(href), a:contains('Next')::attr(href), a:contains('>')::attr(href)",
+"key_fields": [
+"url"
+],
+"fields": {
+"title": {
+"selector": "h2, h3, .woocommerce-loop-product__title, .product-title",
+"type": "string"
+},
+"author": {
+"selector": ".author, .product-author, p:contains('('), span:contains('(')",
+"type": "string"
+},
+"price": {
+"selector": "ins .amount, .price > .amount, .price",
+"type": "string",
+"re": "$$0-9.,$$+",
+"regex": "$$0-9.,$$+"
+},
+"url": {
+"selector": "a.woocommerce-LoopProduct-link, a$$href\\*='/product/'$$, a:first-of-type",
+"attr": "href",
+"type": "url"
+},
+"image_url": {
+"selector": "img",
+"attr": "src",
+"type": "url"
+}
+}
+}
