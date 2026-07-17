@@ -1,0 +1,143 @@
+[2026-07-16T10:51:12] ======================================================================
+[2026-07-16T10:51:12] Starting availability_check_16sites.py
+[2026-07-16T10:51:12] Input: /app/scripts/availability_check_input.csv
+[2026-07-16T10:51:12] Output: /app/scripts/availability_results.csv
+[2026-07-16T10:51:12] Loaded 8137 rows across 16 sites: champaca=63, akshardhara=335, ritikart=71, darussalam=18, boighar=70, idara=4, kairalibooks=24, prajaktprakashan=6, padmagandha=8, aitbspublishers=3, rajhansprakashan=18, bookganga=1463, panuval=516, exoticindia=1952, commonfolks=2853, dcbooks=733
+[2026-07-16T10:51:12] === Starting site: champaca (63 rows) ===
+[2026-07-16T10:51:12] Building champaca catalog (products.json, paginated)...
+[2026-07-16T10:52:00]     HTTP 429 on https://champaca.in/products.json?limit=250&page=61 - backing off 5s (retry 1/6)
+[2026-07-16T10:52:16]   [champaca.in] catalog fetched: 18098 products, 0 with ISBN barcode, 73 pages
+[2026-07-16T10:52:28]   [champaca] 63/63 (ok=63 fail=0 skipped_resumed=0) | overall 63/8137 | elapsed 1.3m
+[2026-07-16T10:52:28] === Finished site: champaca: ok=63 fail=0 skipped_resumed=0 ===
+[2026-07-16T10:52:28] === Starting site: akshardhara (335 rows) ===
+[2026-07-16T10:52:28] Building akshardhara catalog (products.json, paginated)...
+[2026-07-16T10:54:39]   [akshardhara.com] catalog fetched: 21414 products, 0 with ISBN barcode, 86 pages
+[2026-07-16T10:54:59]   [akshardhara] 100/335 (ok=100 fail=0 skipped_resumed=0) | overall 163/8137 | elapsed 3.8m
+[2026-07-16T10:55:19]   [akshardhara] 200/335 (ok=200 fail=0 skipped_resumed=0) | overall 263/8137 | elapsed 4.1m
+[2026-07-16T10:55:39]   [akshardhara] 300/335 (ok=300 fail=0 skipped_resumed=0) | overall 363/8137 | elapsed 4.4m
+[2026-07-16T10:55:46]   [akshardhara] 335/335 (ok=335 fail=0 skipped_resumed=0) | overall 398/8137 | elapsed 4.6m
+[2026-07-16T10:55:46] === Finished site: akshardhara: ok=335 fail=0 skipped_resumed=0 ===
+[2026-07-16T10:55:46] === Starting site: ritikart (71 rows) ===
+[2026-07-16T10:55:46] Building ritikart catalog (products.json, paginated)...
+[2026-07-16T10:56:10]   [ritikart.com] catalog fetched: 6657 products, 0 with ISBN barcode, 27 pages
+[2026-07-16T10:56:24]   [ritikart] 71/71 (ok=71 fail=0 skipped_resumed=0) | overall 469/8137 | elapsed 5.2m
+[2026-07-16T10:56:24] === Finished site: ritikart: ok=71 fail=0 skipped_resumed=0 ===
+[2026-07-16T10:56:24] === Starting site: darussalam (18 rows) ===
+[2026-07-16T10:56:24] Building darussalam catalog (products.json, paginated)...
+[2026-07-16T10:56:29]   [darussalam] catalog fetched: 1832 products, 8 pages
+[2026-07-16T10:56:34]   [darussalam] 18/18 (ok=2 fail=16 skipped_resumed=0) | overall 487/8137 | elapsed 5.4m
+[2026-07-16T10:56:35] === Finished site: darussalam: ok=2 fail=16 skipped_resumed=0 ===
+[2026-07-16T10:56:35] === Starting site: boighar (70 rows) ===
+[2026-07-16T10:57:26]   [boighar] 70/70 (ok=70 fail=0 skipped_resumed=0) | overall 557/8137 | elapsed 6.2m
+[2026-07-16T10:57:26] === Finished site: boighar: ok=70 fail=0 skipped_resumed=0 ===
+[2026-07-16T10:57:26] === Starting site: idara (4 rows) ===
+[2026-07-16T10:57:33]   [idara] 4/4 (ok=4 fail=0 skipped_resumed=0) | overall 561/8137 | elapsed 6.3m
+[2026-07-16T10:57:33] === Finished site: idara: ok=4 fail=0 skipped_resumed=0 ===
+[2026-07-16T10:57:33] === Starting site: kairalibooks (24 rows) ===
+[2026-07-16T10:58:24]   [kairalibooks] 24/24 (ok=24 fail=0 skipped_resumed=0) | overall 585/8137 | elapsed 7.2m
+[2026-07-16T10:58:24] === Finished site: kairalibooks: ok=24 fail=0 skipped_resumed=0 ===
+[2026-07-16T10:58:24] === Starting site: prajaktprakashan (6 rows) ===
+[2026-07-16T10:58:36]   [prajaktprakashan] 6/6 (ok=0 fail=6 skipped_resumed=0) | overall 591/8137 | elapsed 7.4m
+[2026-07-16T10:58:36] === Finished site: prajaktprakashan: ok=0 fail=6 skipped_resumed=0 ===
+[2026-07-16T10:58:36] === Starting site: padmagandha (8 rows) ===
+[2026-07-16T10:58:41]   [padmagandha] 8/8 (ok=8 fail=0 skipped_resumed=0) | overall 599/8137 | elapsed 7.5m
+[2026-07-16T10:58:41] === Finished site: padmagandha: ok=8 fail=0 skipped_resumed=0 ===
+[2026-07-16T10:58:41] === Starting site: aitbspublishers (3 rows) ===
+[2026-07-16T10:58:43]   [aitbspublishers] 3/3 (ok=3 fail=0 skipped_resumed=0) | overall 602/8137 | elapsed 7.5m
+[2026-07-16T10:58:44] === Finished site: aitbspublishers: ok=3 fail=0 skipped_resumed=0 ===
+[2026-07-16T10:58:44] === Starting site: rajhansprakashan (18 rows) ===
+[2026-07-16T10:58:54]   [rajhansprakashan] 18/18 (ok=18 fail=0 skipped_resumed=0) | overall 620/8137 | elapsed 7.7m
+[2026-07-16T10:58:55] === Finished site: rajhansprakashan: ok=18 fail=0 skipped_resumed=0 ===
+[2026-07-16T10:58:55] === Starting site: bookganga (1463 rows) ===
+[2026-07-16T10:58:55] Precheck: is bookganga.com reachable from this server right now?
+[2026-07-16T10:58:55]   bookganga.com NOT reachable (HTTP 403 on homepage during precheck) - this matches a domain-wide HTTP 403 WAF block confirmed during investigation (this server's IP is blocked). All 1463 bookganga rows will be recorded as 'Unable to verify' immediately (no per-row retries) to avoid wasting hours retrying a block that a retry loop cannot clear.
+[2026-07-16T10:59:24]   [bookganga] 100/1463 (ok=0 fail=100 skipped_resumed=0) | overall 720/8137 | elapsed 8.2m
+[2026-07-16T10:59:55]   [bookganga] 200/1463 (ok=0 fail=200 skipped_resumed=0) | overall 820/8137 | elapsed 8.7m
+[2026-07-16T11:00:25]   [bookganga] 300/1463 (ok=0 fail=300 skipped_resumed=0) | overall 920/8137 | elapsed 9.2m
+[2026-07-16T11:00:55]   [bookganga] 400/1463 (ok=0 fail=400 skipped_resumed=0) | overall 1020/8137 | elapsed 9.7m
+[2026-07-16T11:01:25]   [bookganga] 500/1463 (ok=0 fail=500 skipped_resumed=0) | overall 1120/8137 | elapsed 10.2m
+[2026-07-16T11:01:55]   [bookganga] 600/1463 (ok=0 fail=600 skipped_resumed=0) | overall 1220/8137 | elapsed 10.7m
+[2026-07-16T11:02:25]   [bookganga] 700/1463 (ok=0 fail=700 skipped_resumed=0) | overall 1320/8137 | elapsed 11.2m
+[2026-07-16T11:02:55]   [bookganga] 800/1463 (ok=0 fail=800 skipped_resumed=0) | overall 1420/8137 | elapsed 11.7m
+[2026-07-16T11:03:25]   [bookganga] 900/1463 (ok=0 fail=900 skipped_resumed=0) | overall 1520/8137 | elapsed 12.2m
+[2026-07-16T11:03:55]   [bookganga] 1000/1463 (ok=0 fail=1000 skipped_resumed=0) | overall 1620/8137 | elapsed 12.7m
+[2026-07-16T11:04:25]   [bookganga] 1100/1463 (ok=0 fail=1100 skipped_resumed=0) | overall 1720/8137 | elapsed 13.2m
+[2026-07-16T11:04:55]   [bookganga] 1200/1463 (ok=0 fail=1200 skipped_resumed=0) | overall 1820/8137 | elapsed 13.7m
+[2026-07-16T11:05:25]   [bookganga] 1300/1463 (ok=0 fail=1300 skipped_resumed=0) | overall 1920/8137 | elapsed 14.2m
+[2026-07-16T11:05:55]   [bookganga] 1400/1463 (ok=0 fail=1400 skipped_resumed=0) | overall 2020/8137 | elapsed 14.7m
+[2026-07-16T11:06:14]   [bookganga] 1463/1463 (ok=0 fail=1463 skipped_resumed=0) | overall 2083/8137 | elapsed 15.0m
+[2026-07-16T11:06:15] === Finished site: bookganga: ok=0 fail=1463 skipped_resumed=0 ===
+[2026-07-16T11:06:15] === Starting site: panuval (516 rows) ===
+[2026-07-16T11:08:04]   [panuval] 100/516 (ok=100 fail=0 skipped_resumed=0) | overall 2183/8137 | elapsed 16.9m
+[2026-07-16T11:09:35]   [panuval] 200/516 (ok=200 fail=0 skipped_resumed=0) | overall 2283/8137 | elapsed 18.4m
+[2026-07-16T11:11:09]   [panuval] 300/516 (ok=300 fail=0 skipped_resumed=0) | overall 2383/8137 | elapsed 19.9m
+[2026-07-16T11:12:39]   [panuval] 400/516 (ok=400 fail=0 skipped_resumed=0) | overall 2483/8137 | elapsed 21.5m
+[2026-07-16T11:14:55]   [panuval] 500/516 (ok=500 fail=0 skipped_resumed=0) | overall 2583/8137 | elapsed 23.7m
+[2026-07-16T11:15:13]   [panuval] 516/516 (ok=516 fail=0 skipped_resumed=0) | overall 2599/8137 | elapsed 24.0m
+[2026-07-16T11:15:13] === Finished site: panuval: ok=516 fail=0 skipped_resumed=0 ===
+[2026-07-16T11:15:13] === Starting site: exoticindia (1952 rows) ===
+[2026-07-16T11:18:17]   [exoticindia] 100/1952 (ok=100 fail=0 skipped_resumed=0) | overall 2699/8137 | elapsed 27.1m
+[2026-07-16T11:21:29]   [exoticindia] 200/1952 (ok=200 fail=0 skipped_resumed=0) | overall 2799/8137 | elapsed 30.3m
+[2026-07-16T11:24:39]   [exoticindia] 300/1952 (ok=300 fail=0 skipped_resumed=0) | overall 2899/8137 | elapsed 33.5m
+[2026-07-16T11:27:55]   [exoticindia] 400/1952 (ok=400 fail=0 skipped_resumed=0) | overall 2999/8137 | elapsed 36.7m
+[2026-07-16T11:31:24]   [exoticindia] 500/1952 (ok=500 fail=0 skipped_resumed=0) | overall 3099/8137 | elapsed 40.2m
+[2026-07-16T11:34:36]   [exoticindia] 600/1952 (ok=600 fail=0 skipped_resumed=0) | overall 3199/8137 | elapsed 43.4m
+[2026-07-16T11:37:54]   [exoticindia] 700/1952 (ok=700 fail=0 skipped_resumed=0) | overall 3299/8137 | elapsed 46.7m
+[2026-07-16T11:41:06]   [exoticindia] 800/1952 (ok=800 fail=0 skipped_resumed=0) | overall 3399/8137 | elapsed 49.9m
+[2026-07-16T11:44:26]   [exoticindia] 900/1952 (ok=900 fail=0 skipped_resumed=0) | overall 3499/8137 | elapsed 53.2m
+[2026-07-16T11:47:42]   [exoticindia] 1000/1952 (ok=1000 fail=0 skipped_resumed=0) | overall 3599/8137 | elapsed 56.5m
+[2026-07-16T11:51:12]   [exoticindia] 1100/1952 (ok=1100 fail=0 skipped_resumed=0) | overall 3699/8137 | elapsed 60.0m
+[2026-07-16T11:54:29]   [exoticindia] 1200/1952 (ok=1200 fail=0 skipped_resumed=0) | overall 3799/8137 | elapsed 63.3m
+[2026-07-16T11:57:39]   [exoticindia] 1300/1952 (ok=1300 fail=0 skipped_resumed=0) | overall 3899/8137 | elapsed 66.4m
+[2026-07-16T12:00:49]   [exoticindia] 1400/1952 (ok=1400 fail=0 skipped_resumed=0) | overall 3999/8137 | elapsed 69.6m
+[2026-07-16T12:03:57]   [exoticindia] 1500/1952 (ok=1500 fail=0 skipped_resumed=0) | overall 4099/8137 | elapsed 72.8m
+[2026-07-16T12:07:11]   [exoticindia] 1600/1952 (ok=1600 fail=0 skipped_resumed=0) | overall 4199/8137 | elapsed 76.0m
+[2026-07-16T12:10:27]   [exoticindia] 1700/1952 (ok=1700 fail=0 skipped_resumed=0) | overall 4299/8137 | elapsed 79.2m
+[2026-07-16T12:13:32]   [exoticindia] 1800/1952 (ok=1800 fail=0 skipped_resumed=0) | overall 4399/8137 | elapsed 82.3m
+[2026-07-16T12:16:42]   [exoticindia] 1900/1952 (ok=1900 fail=0 skipped_resumed=0) | overall 4499/8137 | elapsed 85.5m
+[2026-07-16T12:18:24]   [exoticindia] 1952/1952 (ok=1952 fail=0 skipped_resumed=0) | overall 4551/8137 | elapsed 87.2m
+[2026-07-16T12:18:24] === Finished site: exoticindia: ok=1952 fail=0 skipped_resumed=0 ===
+[2026-07-16T12:18:24] === Starting site: commonfolks (2853 rows) ===
+[2026-07-16T12:19:43]   [commonfolks] 100/2853 (ok=100 fail=0 skipped_resumed=0) | overall 4651/8137 | elapsed 88.5m
+[2026-07-16T12:21:02]   [commonfolks] 200/2853 (ok=200 fail=0 skipped_resumed=0) | overall 4751/8137 | elapsed 89.8m
+[2026-07-16T12:22:20]   [commonfolks] 300/2853 (ok=300 fail=0 skipped_resumed=0) | overall 4851/8137 | elapsed 91.1m
+[2026-07-16T12:23:38]   [commonfolks] 400/2853 (ok=400 fail=0 skipped_resumed=0) | overall 4951/8137 | elapsed 92.4m
+[2026-07-16T12:25:10]   [commonfolks] 500/2853 (ok=500 fail=0 skipped_resumed=0) | overall 5051/8137 | elapsed 94.0m
+[2026-07-16T12:26:29]   [commonfolks] 600/2853 (ok=600 fail=0 skipped_resumed=0) | overall 5151/8137 | elapsed 95.3m
+[2026-07-16T12:27:50]   [commonfolks] 700/2853 (ok=700 fail=0 skipped_resumed=0) | overall 5251/8137 | elapsed 96.6m
+[2026-07-16T12:29:08]   [commonfolks] 800/2853 (ok=800 fail=0 skipped_resumed=0) | overall 5351/8137 | elapsed 97.9m
+[2026-07-16T12:30:29]   [commonfolks] 900/2853 (ok=900 fail=0 skipped_resumed=0) | overall 5451/8137 | elapsed 99.3m
+[2026-07-16T12:31:46]   [commonfolks] 1000/2853 (ok=1000 fail=0 skipped_resumed=0) | overall 5551/8137 | elapsed 100.6m
+[2026-07-16T12:33:06]   [commonfolks] 1100/2853 (ok=1100 fail=0 skipped_resumed=0) | overall 5651/8137 | elapsed 101.9m
+[2026-07-16T12:34:25]   [commonfolks] 1200/2853 (ok=1200 fail=0 skipped_resumed=0) | overall 5751/8137 | elapsed 103.2m
+[2026-07-16T12:35:59]   [commonfolks] 1300/2853 (ok=1300 fail=0 skipped_resumed=0) | overall 5851/8137 | elapsed 104.8m
+[2026-07-16T12:37:17]   [commonfolks] 1400/2853 (ok=1400 fail=0 skipped_resumed=0) | overall 5951/8137 | elapsed 106.1m
+[2026-07-16T12:38:48]   [commonfolks] 1500/2853 (ok=1500 fail=0 skipped_resumed=0) | overall 6051/8137 | elapsed 107.6m
+[2026-07-16T12:40:33]   [commonfolks] 1600/2853 (ok=1600 fail=0 skipped_resumed=0) | overall 6151/8137 | elapsed 109.4m
+[2026-07-16T12:41:52]   [commonfolks] 1700/2853 (ok=1700 fail=0 skipped_resumed=0) | overall 6251/8137 | elapsed 110.7m
+[2026-07-16T12:43:11]   [commonfolks] 1800/2853 (ok=1800 fail=0 skipped_resumed=0) | overall 6351/8137 | elapsed 112.0m
+[2026-07-16T12:44:32]   [commonfolks] 1900/2853 (ok=1900 fail=0 skipped_resumed=0) | overall 6451/8137 | elapsed 113.3m
+[2026-07-16T12:45:50]   [commonfolks] 2000/2853 (ok=2000 fail=0 skipped_resumed=0) | overall 6551/8137 | elapsed 114.6m
+[2026-07-16T12:47:25]   [commonfolks] 2100/2853 (ok=2100 fail=0 skipped_resumed=0) | overall 6651/8137 | elapsed 116.2m
+[2026-07-16T12:48:43]   [commonfolks] 2200/2853 (ok=2200 fail=0 skipped_resumed=0) | overall 6751/8137 | elapsed 117.5m
+[2026-07-16T12:50:18]   [commonfolks] 2300/2853 (ok=2300 fail=0 skipped_resumed=0) | overall 6851/8137 | elapsed 119.1m
+[2026-07-16T12:51:54]   [commonfolks] 2400/2853 (ok=2400 fail=0 skipped_resumed=0) | overall 6951/8137 | elapsed 120.7m
+[2026-07-16T12:53:13]   [commonfolks] 2500/2853 (ok=2500 fail=0 skipped_resumed=0) | overall 7051/8137 | elapsed 122.0m
+[2026-07-16T12:55:04]   [commonfolks] 2600/2853 (ok=2600 fail=0 skipped_resumed=0) | overall 7151/8137 | elapsed 123.9m
+[2026-07-16T12:56:43]   [commonfolks] 2700/2853 (ok=2700 fail=0 skipped_resumed=0) | overall 7251/8137 | elapsed 125.5m
+[2026-07-16T12:58:02]   [commonfolks] 2800/2853 (ok=2800 fail=0 skipped_resumed=0) | overall 7351/8137 | elapsed 126.8m
+[2026-07-16T12:58:43]   [commonfolks] 2853/2853 (ok=2853 fail=0 skipped_resumed=0) | overall 7404/8137 | elapsed 127.5m
+[2026-07-16T12:58:43] === Finished site: commonfolks: ok=2853 fail=0 skipped_resumed=0 ===
+[2026-07-16T12:58:43] === Starting site: dcbooks (733 rows) ===
+[2026-07-16T12:58:43] Launching Playwright browser for dcbooks (JS-gated SPA)...
+[2026-07-16T13:01:14]   [dcbooks] 100/733 (ok=100 fail=0 skipped_resumed=0) | overall 7504/8137 | elapsed 130.0m
+[2026-07-16T13:03:30]   [dcbooks] 200/733 (ok=200 fail=0 skipped_resumed=0) | overall 7604/8137 | elapsed 132.3m
+[2026-07-16T13:05:45]   [dcbooks] 300/733 (ok=300 fail=0 skipped_resumed=0) | overall 7704/8137 | elapsed 134.6m
+[2026-07-16T13:08:16]   [dcbooks] 400/733 (ok=400 fail=0 skipped_resumed=0) | overall 7804/8137 | elapsed 137.1m
+[2026-07-16T13:10:32]   [dcbooks] 500/733 (ok=500 fail=0 skipped_resumed=0) | overall 7904/8137 | elapsed 139.3m
+[2026-07-16T13:12:47]   [dcbooks] 600/733 (ok=600 fail=0 skipped_resumed=0) | overall 8004/8137 | elapsed 141.6m
+[2026-07-16T13:15:00]   [dcbooks] 700/733 (ok=700 fail=0 skipped_resumed=0) | overall 8104/8137 | elapsed 143.8m
+[2026-07-16T13:15:44]   [dcbooks] 733/733 (ok=733 fail=0 skipped_resumed=0) | overall 8137/8137 | elapsed 144.5m
+[2026-07-16T13:15:44] === Finished site: dcbooks: ok=733 fail=0 skipped_resumed=0 ===
+[2026-07-16T13:15:44] ALL DONE. total_processed=8137/8137 elapsed=144.5m
+[2026-07-16T13:15:44] ======================================================================

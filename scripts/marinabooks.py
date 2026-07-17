@@ -59,6 +59,31 @@ DONE_FILE = os.environ.get("MB_DONE", "/app/scripts/.marina_done.txt")
 SESSION = requests.Session()
 SESSION.headers.update({"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"})
 
+# marinabooks.com serves an incomplete TLS chain that strict clients reject.
+# Prefer proper CA verification (certifi if present); if the chain still fails,
+# fall back to UNVERIFIED for this public, read-only catalog. VERIFY can be
+# forced with MB_VERIFY=1 (strict) or MB_VERIFY=0 (always skip).
+try:
+    import certifi
+    _CA = certifi.where()
+except Exception:
+    _CA = True
+_FORCE = os.environ.get("MB_VERIFY")
+_VERIFY = _CA if _FORCE in (None, "", "1") else False
+_WARNED = False
+
+
+def _warn_insecure():
+    global _WARNED
+    if not _WARNED:
+        _WARNED = True
+        print("   note: TLS chain not verifiable; continuing UNVERIFIED for this "
+              "public read-only site (set MB_VERIFY=1 to force strict).")
+    try:
+        requests.packages.urllib3.disable_warnings()  # quiet the per-request noise
+    except Exception:
+        pass
+
 ID_RE = r"\d{4}-\d{4}-\d{4}-\d{4}"
 
 
@@ -67,9 +92,10 @@ def nap():
 
 
 def get(url):
+    global _VERIFY
     for attempt in range(6):
         try:
-            r = SESSION.get(url, timeout=45)
+            r = SESSION.get(url, timeout=45, verify=_VERIFY)
             if r.status_code in (429, 503):
                 wait = float(r.headers.get("Retry-After") or 0) or min(120, 6 * (2 ** attempt))
                 print(f"   {r.status_code}; wait {wait:.0f}s ({attempt+1}/6)")
@@ -80,6 +106,13 @@ def get(url):
             r.raise_for_status()
             r.encoding = "utf-8"
             return r.text
+        except requests.exceptions.SSLError:
+            if _VERIFY is not False and _FORCE != "1":
+                _VERIFY = False            # drop to unverified for the rest of the run
+                _warn_insecure()
+                continue                   # retry this same URL immediately
+            print(f"   SSL err (try {attempt+1})")
+            time.sleep(min(60, 5 * (2 ** attempt)))
         except Exception as e:
             print(f"   err (try {attempt+1}): {e}")
             time.sleep(min(60, 5 * (2 ** attempt)))
@@ -109,7 +142,7 @@ def page_books(html):
     """[(url, id), ...] for the /detailed/?id= links on a grid page (dedup by id)."""
     out, seen = [], set()
     for m in re.finditer(r'href="(/detailed/[^"]*?\?id=(' + ID_RE + r'))"', html):
-        href, bid = m.group(1), m.group(2)
+        href, bid = _html.unescape(m.group(1)), m.group(2)
         if bid not in seen:
             seen.add(bid)
             out.append((BASE + href, bid))
@@ -184,19 +217,17 @@ def parse_detail(html, url):
     isbn = re.sub(r"[^0-9Xx\-]", "", _spec(text, "ISBN")).strip("-")
     weight = _spec(text, "Weight")
 
-    # price: "₹2000.00 ₹1800.00 ... You Save ₹200 (10% OFF)"  (MRP first, price second)
+    # price: "₹2000.00 ₹1800.00 ... You Save ₹200 (10% OFF)"  (MRP first, price second).
+    # Store the site's EXACT strings (2 decimals as shown); assign mrp=higher, price=lower.
     price = mrp = discount = ""
     pm = re.search(r"₹\s*([\d,]+(?:\.\d+)?)\s*₹\s*([\d,]+(?:\.\d+)?)", text)
     if pm:
-        a = float(pm.group(1).replace(",", ""))
-        b = float(pm.group(2).replace(",", ""))
-        hi, lo = max(a, b), min(a, b)
-        mrp = f"{hi:.2f}".rstrip("0").rstrip(".")
-        price = f"{lo:.2f}".rstrip("0").rstrip(".")
+        s1, s2 = pm.group(1).replace(",", ""), pm.group(2).replace(",", "")
+        mrp, price = (s1, s2) if float(s1) >= float(s2) else (s2, s1)
     else:
         sm = re.search(r"₹\s*([\d,]+(?:\.\d+)?)", text)
         if sm:
-            price = sm.group(1).replace(",", "").rstrip("0").rstrip(".")
+            price = sm.group(1).replace(",", "")
     dm = re.search(r"\(\s*(\d+)\s*%\s*OFF\s*\)", text, re.I)
     if dm:
         discount = dm.group(1)

@@ -51,3 +51,10 @@ SCRIPTS_DIR = os.environ.get("SCRAPER_SCRIPTS_DIR",
 # Set this to enable it. Critical because the dashboard is exposed publicly via
 # ngrok with no other auth, and running scripts is arbitrary code execution.
 SCRIPTS_TOKEN = os.environ.get("SCRIPTS_TOKEN", "")
+
+# ---- Dashboard auth --------------------------------------------------------
+# HTTP Basic auth gating the ENTIRE app (every route, not just /api/script*).
+# The dashboard is tunneled to the public internet, so if this is empty the
+# app refuses all requests rather than failing open.
+DASHBOARD_USER = os.environ.get("DASHBOARD_USER", "admin")
+DASHBOARD_PASSWORD = os.environ.get("DASHBOARD_PASSWORD", "")

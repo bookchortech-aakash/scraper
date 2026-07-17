@@ -13,22 +13,47 @@ import csv
 import datetime
 import io
 import os
+import secrets
 import tempfile
 import threading
 
-from fastapi import Body, FastAPI
+from fastapi import Body, Depends, FastAPI, HTTPException
 from fastapi.responses import FileResponse, HTMLResponse, StreamingResponse
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from starlette.background import BackgroundTask
 from openpyxl import Workbook
 from openpyxl.styles import Font
 
+import config
 import db
 import runner
 import schema
 import scripts_api
 import sites_api
 
-app = FastAPI(title="Scraper monitor")
+# HTTP Basic auth on every route in this app (dashboard + all included
+# routers below). The dashboard is tunneled to the public internet, so an
+# unset DASHBOARD_PASSWORD must deny everything rather than allow it.
+_basic = HTTPBasic()
+
+
+def _require_auth(creds: HTTPBasicCredentials = Depends(_basic)) -> None:
+    if not config.DASHBOARD_PASSWORD:
+        raise HTTPException(
+            status_code=503,
+            detail="DASHBOARD_PASSWORD is not set; dashboard is locked until it is configured.",
+        )
+    user_ok = secrets.compare_digest(creds.username, config.DASHBOARD_USER)
+    pass_ok = secrets.compare_digest(creds.password, config.DASHBOARD_PASSWORD)
+    if not (user_ok and pass_ok):
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid credentials",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+
+
+app = FastAPI(title="Scraper monitor", dependencies=[Depends(_require_auth)])
 app.include_router(scripts_api.router)
 import dedupe_api
 app.include_router(dedupe_api.router)

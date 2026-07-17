@@ -26,6 +26,9 @@ services:
       SCRAPER_UA: "${SCRAPER_UA:-FortovaScraper/1.0 (contact: you@example.com)}"
       # Empty by default -> scripts feature stays disabled (fails safe).
       SCRIPTS_TOKEN: "${SCRIPTS_TOKEN:-}"
+      # Empty by default -> dashboard refuses all requests (fails closed).
+      DASHBOARD_USER: "${DASHBOARD_USER:-admin}"
+      DASHBOARD_PASSWORD: "${DASHBOARD_PASSWORD:-}"
     volumes:
       - ./sites:/app/sites
       - ./scripts:/app/scripts
